@@ -1,0 +1,39 @@
+{
+    "name"        : "toin0u/yo-cli",
+    "type"        : "library",
+    "description" : "Yo from your console",
+    "keywords"    : ["yo", "justyo.co", "cli", "yoapp"],
+    "homepage"    : "https://github.com/toin0u/yo-cli",
+    "license"     : "MIT",
+
+    "authors" : [
+        {
+            "name": "Antoine Corcy",
+            "email": "contact@sbin.dk",
+            "homepage": "http://sbin.dk",
+            "role": "Developer"
+        }
+    ],
+
+    "support" : {
+        "issues" : "https://github.com/toin0u/yo-cli/issues",
+        "source" : "https://github.com/toin0u/yo-cli"
+    },
+
+    "require" : {
+        "php"             : "~5.4",
+        "toin0u/yo"       : "~1.0",
+        "symfony/console" : "~2.6",
+        "symfony/yaml"    : "~2.6"
+    },
+
+    "autoload" : {
+        "psr-4" : { "Yo\\": "src/" }
+    },
+
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "0.1-dev"
+        }
+    }
+}

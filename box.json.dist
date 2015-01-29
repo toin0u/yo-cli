@@ -1,0 +1,26 @@
+{
+    "chmod": "0755",
+    "directories": [
+        "src"
+    ],
+    "files": [
+        "LICENSE"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": [
+                "Tests",
+                "tests",
+                "test",
+                "build",
+                "spec"
+            ],
+            "in": "vendor"
+        }
+    ],
+    "git-version": "package_version",
+    "main": "bin/yo",
+    "output": "build/yo.phar",
+    "stub": true
+}

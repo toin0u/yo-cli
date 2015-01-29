@@ -1,0 +1,8 @@
+build/
+vendor/
+box.json
+composer.lock
+phpunit.xml
+private.key
+yo.yml
+.yo.yml
