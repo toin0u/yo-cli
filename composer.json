@@ -28,7 +28,10 @@
     },
 
     "autoload" : {
-        "psr-4" : { "Yo\\": "src/" }
+        "psr-4" : {
+            "Yo\\"        : "src/",
+            "Yo\\Tests\\" : "tests/"
+        }
     },
 
     "extra" : {
