@@ -31,7 +31,7 @@ class ConfigTest extends \Yo\Tests\TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Custom configuration file `not_existing_file` does not exist.
      */
-    public function testNoConfigurationFound()
+    public function testGivenConfigurationFileNotFound()
     {
         $this->input
             ->expects($this->once())
@@ -43,6 +43,25 @@ class ConfigTest extends \Yo\Tests\TestCase
         $this->config->setInput($this->input);
 
         $this->config->getConfiguration();
+    }
+
+    /**
+     * @expectedException \RuntimeException
+     * @expectedExceptionMessage No configuration files could be found.
+     */
+    public function testNoConfigurationFileFound()
+    {
+        $this->input
+            ->expects($this->once())
+            ->method('getParameterOption')
+            ->with(['--config', '-c'])
+            ->will($this->returnValue(''))
+        ;
+
+        $config = new Config(['not_existing_file']);
+        $config->setInput($this->input);
+
+        $config->getConfiguration();
     }
 
     public function testConfigurationFileLoadedSuccessfully()

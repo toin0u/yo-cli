@@ -21,12 +21,25 @@ class Config extends \Symfony\Component\Console\Helper\InputAwareHelper
     /**
      * @var array
      */
+    protected $paths = [];
+
+    /**
+     * @var array
+     */
     protected $config = [];
 
     /**
      * @var boolean
      */
     protected $isLoaded = false;
+
+    /**
+     * @param string[]
+     */
+    public function __construct(array $paths = [])
+    {
+        $this->paths = $paths ?: ['.yo.yml', 'yo.yml', sprintf('%s/.yo.yml', getenv('HOME'))];
+    }
 
     /**
      * {@inheritdoc}
@@ -72,8 +85,6 @@ class Config extends \Symfony\Component\Console\Helper\InputAwareHelper
      */
     private function getPaths()
     {
-        $paths = ['.yo.yml', 'yo.yml', sprintf('%s/.yo.yml', getenv('HOME'))];
-
         if ($customPath = $this->input->getParameterOption(['--config', '-c'])) {
             if (!file_exists($customPath)) {
                 throw new \InvalidArgumentException(sprintf(
@@ -82,10 +93,10 @@ class Config extends \Symfony\Component\Console\Helper\InputAwareHelper
                 ));
             }
 
-            $paths = [$customPath];
+            return [$customPath];
         }
 
-        return $paths;
+        return $this->paths;
     }
 
     /**
