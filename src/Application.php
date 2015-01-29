@@ -14,7 +14,7 @@ namespace Yo;
 use Symfony\Component\Console\Input\InputOption;
 use Yo\Command\User;
 use Yo\Helper\Config;
-use Yo\Helper\Yo;
+use Yo\Helper\Yo as YoHelper;
 
 /**
  * @author Antoine Corcy <contact@sbin.dk>
@@ -58,7 +58,7 @@ class Application extends \Symfony\Component\Console\Application
         $helperSet = parent::getDefaultHelperSet();
 
         $helperSet->set(new Config);
-        $helperSet->set(new Yo);
+        $helperSet->set(new YoHelper);
 
         return $helperSet;
     }
