@@ -4,6 +4,8 @@ Yo CLI
 [![Latest Version](https://img.shields.io/github/release/toin0u/yo-cli.svg?style=flat-square)](https://github.com/toin0u/yo-cli/releases)
 [![Build Status](https://img.shields.io/travis/toin0u/yo-cli/master.svg?style=flat-square)](https://travis-ci.org/toin0u/yo-cli)
 [![Quality Score](https://img.shields.io/scrutinizer/g/toin0u/yo-cli.svg?style=flat-square)](https://scrutinizer-ci.com/g/toin0u/yo-cli)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/toin0u/yo-cli.svg?style=flat-square)](https://scrutinizer-ci.com/g/toin0u/yo-cli)
+[![HHVM Status](https://img.shields.io/hhvm/toin0u/yo-cli.svg?style=flat-square)](http://hhvm.h4cc.de/package/toin0u/yo-cli)
 [![Total Downloads](https://img.shields.io/packagist/dt/toin0u/yo-cli.svg?style=flat-square)](https://packagist.org/packages/toin0u/yo-cli)
 
 **Yo from your console**
