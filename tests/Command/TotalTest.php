@@ -31,7 +31,7 @@ class TotalTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command' => $this->command->getName(),
         ));
@@ -53,7 +53,7 @@ class TotalTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command' => $this->command->getName(),
         ));

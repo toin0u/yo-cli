@@ -13,8 +13,12 @@ class ApplicationTest extends TestCase
         $this->application = new Application;
     }
 
-    public function testUserCommandIsRegistred()
+    public function testCommandsAreRegistred()
     {
+        $this->assertInstanceOf('Symfony\Component\Console\Command\Command', $this->application->get('all'));
+        $this->assertInstanceOf('Symfony\Component\Console\Command\Command', $this->application->get('check'));
+        $this->assertInstanceOf('Symfony\Component\Console\Command\Command', $this->application->get('create'));
+        $this->assertInstanceOf('Symfony\Component\Console\Command\Command', $this->application->get('total'));
         $this->assertInstanceOf('Symfony\Component\Console\Command\Command', $this->application->get('user'));
     }
 

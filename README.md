@@ -10,10 +10,6 @@ Yo CLI
 
 **Yo from your console**
 
-Todo
-----
-- [ ] Create an [account](https://github.com/toin0u/yo#accounts)
-
 
 Install
 -------
@@ -47,6 +43,7 @@ Commands
 - Yo ALL your subscribers with a link: `yo.phar all http://sbin.dk/`
 - Check if TOIN0U Yo username exists or not: `yo.phar check toin0u`
 - Get your total subscribers: `yo.phar total`
+- Create an accound named TOIN0U999: `yo.phar create toin0u999`
 
 NB: Yo ALL is limited to **one per minute** !
 

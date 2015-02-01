@@ -23,7 +23,7 @@ class UserTest extends \Yo\Tests\TestCase
      */
     public function testUsernameArgumentIsMandatory()
     {
-        $this->getCommandTester($this->command, $this->yoHelper)->execute([
+        $this->getCommandTester($this->command, [$this->yoHelper])->execute([
             'command' => $this->command->getName(),
         ]);
     }
@@ -42,7 +42,7 @@ class UserTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command'  => $this->command->getName(),
             'username' => 'invalid_username',
@@ -65,7 +65,7 @@ class UserTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command'    => $this->command->getName(),
             'username'   => 'toin0u',
@@ -89,7 +89,7 @@ class UserTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command'    => $this->command->getName(),
             'username'   => 'toin0u',
@@ -113,7 +113,7 @@ class UserTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command'    => $this->command->getName(),
             'username'   => 'toin0u',

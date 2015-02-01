@@ -49,14 +49,22 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param  Command              $command
-     * @param  HelperInterface|null $helper
+     * @param  Command           $command
+     * @param  HelperInterface[] $helpers
      * @return CommandTester
      */
-    protected function getCommandTester(Command $command, HelperInterface $helper = null)
+    protected function getCommandTester(Command $command, array $helpers = [])
     {
-        if (null !== $helper) {
-            $command->getHelperSet()->set($helper, $helper->getName());
+        if (!empty($helpers)) {
+            foreach ($helpers as $helper) {
+                if ($helper instanceof HelperInterface) {
+                    $command->getHelperSet()->set($helper, $helper->getName());
+                } else {
+                    throw new \InvalidArgumentException(
+                        'Cannot create CommandTester because a given helper is not an instance of HelperInterface.'
+                    );
+                }
+            }
         }
 
         return new CommandTester($command);

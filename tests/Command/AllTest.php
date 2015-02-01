@@ -30,7 +30,7 @@ class AllTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command' => $this->command->getName(),
         ));
@@ -51,7 +51,7 @@ class AllTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command' => $this->command->getName(),
             'url'     => 'invalid_url',
@@ -73,7 +73,7 @@ class AllTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command' => $this->command->getName(),
             'url'     => 'http://sbin.dk/',
@@ -96,7 +96,7 @@ class AllTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command' => $this->command->getName(),
         ));

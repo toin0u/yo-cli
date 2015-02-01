@@ -23,7 +23,7 @@ class CheckTest extends \Yo\Tests\TestCase
      */
     public function testUsernameArgumentIsMandatory()
     {
-        $this->getCommandTester($this->command, $this->yoHelper)->execute([
+        $this->getCommandTester($this->command, [$this->yoHelper])->execute([
             'command' => $this->command->getName(),
         ]);
     }
@@ -42,7 +42,7 @@ class CheckTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command'  => $this->command->getName(),
             'username' => 'invalid_username',
@@ -65,7 +65,7 @@ class CheckTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command'  => $this->command->getName(),
             'username' => 'foobar',
@@ -88,7 +88,7 @@ class CheckTest extends \Yo\Tests\TestCase
             ->will($this->returnValue($this->yo))
         ;
 
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
+        $commandTester = $this->getCommandTester($this->command, [$this->yoHelper]);
         $commandTester->execute(array(
             'command'  => $this->command->getName(),
             'username' => 'bazqmu',
