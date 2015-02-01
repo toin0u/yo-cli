@@ -2,17 +2,17 @@
 
 namespace Yo\Tests\Command;
 
-use Yo\Command\User;
+use Yo\Command\Check;
 
-class UserTest extends \Yo\Tests\TestCase
+class CheckTest extends \Yo\Tests\TestCase
 {
     protected $command;
     protected $yo;
 
     protected function setUp()
     {
-        $this->command = $this->createCommand(new User);
-        $this->yo      = $this->getYo(['user']);
+        $this->command  = $this->createCommand(new Check);
+        $this->yo       = $this->getYo(['exists']);
 
         parent::setUp();
     }
@@ -32,7 +32,7 @@ class UserTest extends \Yo\Tests\TestCase
     {
         $this->yo
             ->expects($this->once())
-            ->method('user')
+            ->method('exists')
             ->will($this->throwException(new \RuntimeException('Boo!')))
         ;
 
@@ -51,11 +51,11 @@ class UserTest extends \Yo\Tests\TestCase
         $this->assertRegExp('/Boo!/', $commandTester->getDisplay());
     }
 
-    public function testGivenParametersAreIgnored()
+    public function testGivenUsernameExists()
     {
         $this->yo
             ->expects($this->once())
-            ->method('user')
+            ->method('exists')
             ->will($this->returnValue(true))
         ;
 
@@ -67,20 +67,19 @@ class UserTest extends \Yo\Tests\TestCase
 
         $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
         $commandTester->execute(array(
-            'command'    => $this->command->getName(),
-            'username'   => 'toin0u',
-            'parameters' => ['foo', 'bar', 'baz'],
+            'command'  => $this->command->getName(),
+            'username' => 'foobar',
         ));
 
-        $this->assertRegExp('/Yo `TOIN0U`/', $commandTester->getDisplay());
+        $this->assertRegExp('/`FOOBAR` exists\./', $commandTester->getDisplay());
     }
 
-    public function testLinkParameter()
+    public function testGivenUsernameDoesNotExist()
     {
         $this->yo
             ->expects($this->once())
-            ->method('user')
-            ->will($this->returnValue(true))
+            ->method('exists')
+            ->will($this->returnValue(false))
         ;
 
         $this->yoHelper
@@ -91,35 +90,10 @@ class UserTest extends \Yo\Tests\TestCase
 
         $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
         $commandTester->execute(array(
-            'command'    => $this->command->getName(),
-            'username'   => 'toin0u',
-            'parameters' => ['http://sbin.dk/'],
+            'command'  => $this->command->getName(),
+            'username' => 'bazqmu',
         ));
 
-        $this->assertRegExp('/Yo `TOIN0U` ~ `http:\/\/sbin.dk\/`/', $commandTester->getDisplay());
-    }
-
-    public function testLocationParameter()
-    {
-        $this->yo
-            ->expects($this->once())
-            ->method('user')
-            ->will($this->returnValue(true))
-        ;
-
-        $this->yoHelper
-            ->expects($this->once())
-            ->method('getYo')
-            ->will($this->returnValue($this->yo))
-        ;
-
-        $commandTester = $this->getCommandTester($this->command, $this->yoHelper);
-        $commandTester->execute(array(
-            'command'    => $this->command->getName(),
-            'username'   => 'toin0u',
-            'parameters' => ['123.4', '567.8'],
-        ));
-
-        $this->assertRegExp('/Yo `TOIN0U` ~ `123.400000,567.800000`/', $commandTester->getDisplay());
+        $this->assertRegExp('/`BAZQMU` does not exist\./', $commandTester->getDisplay());
     }
 }

@@ -12,6 +12,9 @@
 namespace Yo;
 
 use Symfony\Component\Console\Input\InputOption;
+use Yo\Command\All;
+use Yo\Command\Check;
+use Yo\Command\Total;
 use Yo\Command\User;
 use Yo\Helper\Config;
 use Yo\Helper\Yo as YoHelper;
@@ -28,6 +31,9 @@ class Application extends \Symfony\Component\Console\Application
     {
         $commands = parent::getDefaultCommands();
 
+        $commands[] = new All;
+        $commands[] = new Check;
+        $commands[] = new Total;
         $commands[] = new User;
 
         return $commands;
