@@ -10,6 +10,10 @@ Yo CLI
 
 **Yo from your console**
 
+Todo
+----
+- [ ] Create an [account](https://github.com/toin0u/yo#accounts)
+
 
 Install
 -------
@@ -36,7 +40,15 @@ You can see an [example here](https://github.com/toin0u/yo-cli/blob/master/res/y
 Commands
 --------
 
-WIP
+- Yo TOIN0U: `yo.phar user toin0u`
+- Yo TOIN0U with a ink: `yo.phar user toin0u http://sbin.dk/`
+- Yo TOIN0U with a GPS coordinate: `yo.phar user toin0u 55.6760968 12.5683371`
+- Yo ALL your subscribers: `yo.phar all`
+- Yo ALL your subscribers with a link: `yo.phar all http://sbin.dk/`
+- Check if TOIN0U Yo username exists or not: `yo.phar check toin0u`
+- Get your total subscribers: `yo.phar total`
+
+NB: Yo ALL is limited to **one per minute** !
 
 
 Testing
